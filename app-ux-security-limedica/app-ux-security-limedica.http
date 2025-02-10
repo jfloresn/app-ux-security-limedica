@@ -1,0 +1,6 @@
+@app_ux_security_limedica_HostAddress = http://localhost:5044
+
+GET {{app_ux_security_limedica_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
