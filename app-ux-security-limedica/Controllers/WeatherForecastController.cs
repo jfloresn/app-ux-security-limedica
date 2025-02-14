@@ -19,9 +19,6 @@ namespace app_ux_security_limedica.Controllers
             _logger = logger;
         }
 
-       
-     
-
         [HttpGet("users")]
         public async Task<ActionResult<IEnumerable<Usuario>>> ObtenerUsuarios()
         {
