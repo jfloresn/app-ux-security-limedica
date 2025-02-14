@@ -9,23 +9,24 @@ namespace app_ux_security_limedica.Controllers
     public class WeatherForecastController : ControllerBase
     {
 
-        private readonly DatabaseService _databaseService;
+        private readonly UsuarioRepository _databaseService;
         private readonly ILogger<WeatherForecastController> _logger;
 
 
-        public WeatherForecastController(DatabaseService databaseService, ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(UsuarioRepository databaseService, ILogger<WeatherForecastController> logger)
         {
             _databaseService = databaseService;
             _logger = logger;
         }
 
         [HttpGet("users")]
-        public async Task<ActionResult<IEnumerable<Usuario>>> ObtenerUsuarios()
+        public async IAsyncEnumerable<Usuario> ObtenerUsuarios()
         {
-            var usuarios = await _databaseService.ObtenerUsuariosAsync();
-            return Ok(usuarios);
+            await foreach (var usuario in _databaseService.ObtenerUsuariosAsync())
+            {
+                yield return usuario;
+            }
         }
-
 
         private static readonly string[] Summaries = new[]
         {
