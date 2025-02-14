@@ -1,4 +1,6 @@
 using app_ux_security_limedica.Infraestructure;
+using app_ux_security_limedica.Infraestructure.filtro;
+using app_ux_security_limedica.Infraestructure.repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,7 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<UsuarioRepository>();
+builder.Services.AddScoped<DatabaseConnectionService>();
+builder.Services.AddScoped<FiltrarEspecialidadEditorialRepository>();
 
 // Agregar soporte para compresión de respuesta
 builder.Services.AddResponseCompression();
