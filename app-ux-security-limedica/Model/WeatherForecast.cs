@@ -1,4 +1,4 @@
-namespace app_ux_security_limedica
+namespace app_ux_security_limedica.Model
 {
     public class WeatherForecast
     {
